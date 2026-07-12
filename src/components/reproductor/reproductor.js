@@ -34,7 +34,7 @@ export function loadSong(songName) {
   const audioFileInput = document.getElementById("audioFile");
   const songTitle = document.getElementById("song-title");
 
-  const songPath = `/src/music/${songName}`;
+  const songPath = `/music/${songName}`;
 
   if (audioFileInput) {
     audioFileInput.value = songPath; 

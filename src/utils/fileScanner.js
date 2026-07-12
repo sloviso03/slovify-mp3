@@ -1,6 +1,6 @@
 export function fileScanner() {
   const songs = []; 
-  const modules = import.meta.glob('/src/music/*');
+  const modules = import.meta.glob('/public/music/*');
   console.log('Filenames in the directory:');
     
   for (const path in modules) {
