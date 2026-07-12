@@ -1,10 +1,28 @@
 .main-layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto; 
+  height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .main-layout main {
-  flex: 1;
-  padding: 0rem 2rem 2rem 2rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; 
+  padding: var(--space-md) var(--space-xl);
+  box-sizing: border-box;
+}
+
+#header {
+  width: 100%;
+  background-color: var(--color-navbar-footer);
+  border-bottom: 1px solid var(--color-background-secondary);
+}
+
+.footer {
+  width: 100%;
+  background-color: var(--color-navbar-footer);  
+  border-top: 1px solid var(--color-background-secondary);
+  display: flex;
+  flex-direction: column;  
 }
