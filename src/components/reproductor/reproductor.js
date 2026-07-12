@@ -28,10 +28,35 @@ export function Reproductor(song) {
   return fragment;
 }
 
-function togglePlay(audioElm, playButton, audioFileInput, songTitle) {
+
+export function loadSong(songName) {
+  const audioElm = document.getElementById("audio1");  
+  const audioFileInput = document.getElementById("audioFile");
+  const songTitle = document.getElementById("song-title");
+
+  const songPath = `/src/music/${songName}`;
+
+  if (audioFileInput) {
+    audioFileInput.value = songPath; 
+  }
+
+  if (audioElm) {
+    audioElm.src = songPath; 
+    audioElm.play(); 
+  }
+
+  if (songTitle) {
+    songTitle.textContent = songName; 
+  }
+
+}
+
+
+
+function togglePlay(audioElm, playButton) {
   if (audioElm) {
     if (audioElm.paused) {
-      playAudio(audioElm, playButton, audioFileInput, songTitle);
+      playAudio(audioElm, playButton);
       console.log("Playing audio");
     } else {
       pauseAudio(audioElm, playButton);
@@ -39,16 +64,8 @@ function togglePlay(audioElm, playButton, audioFileInput, songTitle) {
   }
 }
 
-function playAudio(audioElm, playButton, audioFileInput, songTitle) {
-  playButton.textContent = "Pause";
-  
-  if (!audioElm.src || audioElm.src !== audioFileInput.value) {
-    audioElm.src = audioFileInput.value;
-    if (songTitle) {
-      songTitle.textContent = audioFileInput.value;
-    }
-  }
-
+function playAudio(audioElm, playButton) {
+  playButton.textContent = "Pause";  
   audioElm.play();
 }
 
@@ -56,3 +73,5 @@ function pauseAudio(audioElm, playButton) {
   playButton.textContent = "Play";
   audioElm.pause();
 }
+
+

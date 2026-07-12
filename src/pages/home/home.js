@@ -1,9 +1,9 @@
 import homeTemplate from './home.html?raw';
+import { RenderSongCard } from '../../components/song-card/song-card.js';
+import { loadSong } from '../../components/reproductor/reproductor.js';
 import './home.css';
-import { fileScanner } from '../../utils/fileScanner.js';
 
 let template = null;
-let songs;
 
 function buildTemplate() {
   const wrapper = document.createElement('div');
@@ -16,22 +16,11 @@ export async function HomePage() {
   if (!template) template = buildTemplate();
 
   const fragment = template.content.cloneNode(true);
-  const page = fragment.querySelector('.home-page');
+  const page = fragment.querySelector('.home-page');  
 
-  songs = fileScanner();
-  
-  const songsListContainer = fragment.querySelector('#songs-list');
-  songsListContainer.innerHTML = '';
-  const ul = document.createElement('ul');
-
-  songs.forEach(song => {
-    const li = document.createElement('li');
-    li.textContent = song;
-    ul.appendChild(li);
-  });
-
-  songsListContainer.appendChild(ul);
-  
+  const cardContainer = page.querySelector('#card-container');
+  const cardElement = await RenderSongCard(loadSong);
+  cardContainer.appendChild(cardElement);
 
   return page;
 }
