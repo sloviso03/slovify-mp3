@@ -39,10 +39,6 @@
   align-items: center;
 }
 
-.footer-a.active .footer-icon-wrapper {
-  background-color: var(--color-background-tertiary);
-}
-
 .footer-img {
   width: 1.5rem;
   height: 1.5rem;
