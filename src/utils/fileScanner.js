@@ -5,9 +5,7 @@ export function fileScanner() {
     
   for (const path in modules) {
     const filename = path.split('/').pop();        
-    const fileNameTrimmed = filename.split('.').slice(0, -1).join('.')
-
-    songs.push(fileNameTrimmed);
+    songs.push(filename);
   }
 
   console.log(songs);

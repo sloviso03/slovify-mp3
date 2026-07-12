@@ -35,7 +35,7 @@ export async function RenderSongCard(songName) {
     img.classList.add('song-icon');
     
     const span = document.createElement('span');
-    span.textContent = song;
+    span.textContent = song.split('.').slice(0, -1).join('.');
     span.classList.add('song-title');
     
     li.appendChild(img);

@@ -46,7 +46,7 @@ export function loadSong(songName) {
   }
 
   if (songTitle) {
-    songTitle.textContent = songName; 
+    songTitle.textContent = songName.split('.').slice(0, -1).join('.'); 
   }
 
 }
